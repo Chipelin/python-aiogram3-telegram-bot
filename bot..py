@@ -2,38 +2,20 @@ import asyncio
 import logging
 import sys
 from os import getenv
+from dotenv import load_dotenv
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from typing import Any, Awaitable, Callable, Dict
-from aiogram import BaseMiddleware
-from aiogram.types import TelegramObject
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from aiogram.client.bot import DefaultBotProperties
 from db import db_start
 from handlers import start, help, echo, register, task, users, weather, photo
-from dotenv import load_dotenv
+from middleware.scheduler import SchedulerMiddleware
 
 
 
 async def on_startup(_):
     await db_start()
     
-
-#Add middleware Scheduler
-class SchedulerMiddleware(BaseMiddleware):
-    def __init__(self, scheduler: AsyncIOScheduler):
-        self.scheduler = scheduler
-
-    async def __call__(
-        self,
-        handler: Callable[[TelegramObject, Dict[str, Any]], Awaitable[Any]],
-        event: TelegramObject,
-        data: Dict[str, Any],
-    ) -> Any:
-        # add apscheduler to data
-        data["apscheduler"] = self.scheduler
-        return await handler(event, data)  
 
 
 async def main() -> None:

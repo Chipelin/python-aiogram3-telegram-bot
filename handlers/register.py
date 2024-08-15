@@ -9,7 +9,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.utils.chat_action import ChatActionSender
 from aiogram.client.bot import DefaultBotProperties
 from aiogram.enums import ParseMode
-from db import create_user, edit_user
+from database.sqlite import create_user, edit_user
 import re
 
 load_dotenv()

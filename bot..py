@@ -7,7 +7,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from aiogram.client.bot import DefaultBotProperties
-from db import db_start
+from database.sqlite import db_start
 from handlers import start, help, echo, register, task, users, weather, photo
 from middleware.scheduler import SchedulerMiddleware
 

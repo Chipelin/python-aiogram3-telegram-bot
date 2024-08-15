@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 router = Router()
   
 async def send_message_scheduler(bot: Bot, message: str, user_id: int):
-    await bot.send_message(chat_id=int(user_id), text="Не забудьте проверить уведомления!!")
+    await bot.send_message(chat_id=int(user_id), text="Не забудьте проверить уведомления!!!!!!")
 
 @router.message(Command("task"))
 async def echo_handler(

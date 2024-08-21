@@ -27,7 +27,7 @@ async def echo_handler(
             trigger="interval",
             start_date = datetime.now(),
             seconds = 3,
-
+            id= 'my_task',
             kwargs={
                 "bot": bot,
                 "message": message.text,

@@ -8,7 +8,7 @@ from aiogram.enums import ParseMode
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from aiogram.client.bot import DefaultBotProperties
 from database.sqlite import db_start
-from handlers import start, help, echo, register, task, users, weather, photo
+from handlers import start, help, echo, register, task, users, weather, photo, cancel
 from middleware.scheduler import SchedulerMiddleware
 
 
@@ -32,7 +32,8 @@ async def main() -> None:
                        task.router,
                        users.router,
                        weather.router,
-                       photo.router)
+                       photo.router,
+                       cancel.router)
     
     # And the run events dispatching
     scheduler = AsyncIOScheduler()
